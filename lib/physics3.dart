@@ -1,6 +1,7 @@
+//imports
 import 'package:flutter/material.dart';
 
-import 'dart:math';
+import 'dart:math'; //math import for quadratic
 
 class Physics3Page extends StatefulWidget {
   @override
@@ -8,6 +9,7 @@ class Physics3Page extends StatefulWidget {
 }
 
 class Physics3PageState extends State<Physics3Page> {
+  //variables
   double time = 0,
       displace = 0,
       initialv = 0,
@@ -17,11 +19,13 @@ class Physics3PageState extends State<Physics3Page> {
   bool isFindTime = false;
   String units = "";
 
+//controllers to take in text
   final TextEditingController t1 = new TextEditingController();
   final TextEditingController t2 = new TextEditingController();
   final TextEditingController t3 = new TextEditingController();
   final TextEditingController t4 = new TextEditingController();
 
+//method to calculate acceleration
   void findA() {
     setState(() {
       isFindTime = false;
@@ -34,6 +38,7 @@ class Physics3PageState extends State<Physics3Page> {
     });
   }
 
+//method to calculate time
   void findT() {
     setState(() {
       isFindTime = true;
@@ -53,6 +58,7 @@ class Physics3PageState extends State<Physics3Page> {
     });
   }
 
+//method to calculate initial velocity
   void findVi() {
     setState(() {
       isFindTime = false;
@@ -65,6 +71,7 @@ class Physics3PageState extends State<Physics3Page> {
     });
   }
 
+//method to calculate displacemoent
   void findD() {
     setState(() {
       isFindTime = false;
@@ -77,79 +84,110 @@ class Physics3PageState extends State<Physics3Page> {
     });
   }
 
+//build statement
   Widget build(BuildContext ctx) {
     return Scaffold(
-        resizeToAvoidBottomInset: false,
+        //overall scaffold
+        resizeToAvoidBottomInset:
+            false, //ensures that the keyboard doesn't throw renderflex error
         appBar: AppBar(
+          //app bar
           backgroundColor: Colors.black,
           elevation: 1.0,
           centerTitle: true,
           title: new Text("Equation #3"),
         ),
         body: new Container(
-            padding: const EdgeInsets.all(40.0),
+            //container to hold all widgets
+            padding: const EdgeInsets.all(40.0), //padding
             child: new Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                //holds all widgets vertically
+                mainAxisAlignment: MainAxisAlignment.center, //centers widgets
                 children: [
+                  // list of widgets
                   new Text(
+                      //text
                       "Enter The Following Values (Leave the value you are looking for BLANK and press the button with what you are looking for written on it): ",
+                      textAlign: TextAlign.center,
                       style: new TextStyle(
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.black)),
-                  Spacer(flex: 1),
+                  Spacer(flex: 1), //spaces out
                   new TextField(
-                    keyboardType: TextInputType.number,
+                    //textfield to receive input from text
+                    keyboardType: TextInputType
+                        .number, //ensures that textfield only takes numbers
                     decoration:
                         new InputDecoration(hintText: "Enter Acceleration"),
-                    controller: t1,
+                    controller: t1, //points textfield to variable
                   ),
-                  Spacer(),
+                  Spacer(), //spaces out
                   new TextField(
-                    keyboardType: TextInputType.number,
+                    //textfield to receive input from text
+                    keyboardType: TextInputType
+                        .number, //ensures that textfield only takes numbers
                     decoration: new InputDecoration(hintText: "Enter Time"),
-                    controller: t2,
+                    controller: t2, //points textfield to variable
                   ),
-                  Spacer(),
+                  Spacer(), //spaces out
                   new TextField(
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType
+                        .number, //textfield to receive input from text
                     decoration:
                         new InputDecoration(hintText: "Enter Initial Velocity"),
-                    controller: t3,
+                    controller: t3, //points textfield to variable
                   ),
-                  Spacer(),
+                  Spacer(), //spaces out
                   new TextField(
-                    keyboardType: TextInputType.number,
+                    keyboardType: TextInputType
+                        .number, //textfield to receive input from text
                     decoration:
                         new InputDecoration(hintText: "Enter Displacement"),
-                    controller: t4,
+                    controller: t4, //points textfield to variable
                   ),
-                  Spacer(),
+                  Spacer(), //spaces out
                   new Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      //new column holding buttons
+                      mainAxisAlignment:
+                          MainAxisAlignment.center, //centers widgets
                       children: [
+                        //list of widgets
                         new RaisedButton(
-                            color: Colors.blue,
-                            child: new Text("Find Acceleration!"),
-                            onPressed: findA),
+                            //buttons
+                            color: Colors.blue[300],
+                            child: new Text("  Find Acceleration!  ",
+                                style: TextStyle(
+                                    fontFamily: 'BebasNeue', fontSize: 24)),
+                            onPressed: findA), //calculates on pressed
                         new RaisedButton(
-                            color: Colors.blue,
-                            child: new Text("Find Time!"),
-                            onPressed: findT),
+                            color: Colors.blue[300],
+                            child: new Text("           Find Time!           ",
+                                style: TextStyle(
+                                    fontFamily: 'BebasNeue', fontSize: 24)),
+                            onPressed: findT), //calculates on pressed
                         new RaisedButton(
-                            color: Colors.blue,
-                            child: new Text("Find Initial Velocity!"),
-                            onPressed: findVi),
+                            color: Colors.blue[300],
+                            child: new Text("Find Initial Velocity!",
+                                style: TextStyle(
+                                    fontFamily: 'BebasNeue', fontSize: 24)),
+                            onPressed: findVi), //calculates on pressed
                         new RaisedButton(
-                            color: Colors.blue,
-                            child: new Text("Find Displacement!"),
-                            onPressed: findD),
+                            color: Colors.blue[300],
+                            child: new Text("  Find Displacement!  ",
+                                style: TextStyle(
+                                    fontFamily: 'BebasNeue', fontSize: 24)),
+                            onPressed: findD), //calculates on pressed
                       ]),
-                  Spacer(flex: 3),
+                  Spacer(flex: 3), //spaces out
                   new Text(
+                      //displays text on screen
                       isFindTime == false
-                          ? "Answer: " + answer.toString() + " " + units
-                          : "Answer: " +
+                          ? "Answer: " +
+                              answer.toString() +
+                              " " +
+                              units //if required to find time statement
+                          : "Answer: " + //else statement (not finding time)
                               answer.toString() +
                               " " +
                               units +
@@ -161,7 +199,7 @@ class Physics3PageState extends State<Physics3Page> {
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.black)),
-                  Spacer(flex: 7),
+                  Spacer(flex: 7), //spaces out
                 ])));
   }
 }
