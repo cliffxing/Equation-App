@@ -1,4 +1,4 @@
-# equationApp
+# EquationApp
 
 ![Main Screen: ](readmeimages/equationapp1.png)
 ![Quadratic: ](readmeimages/equationapp2.png)
